@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # AlzTrial
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/matias-lee/AlzTrial/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/matias-lee/AlzTrial/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/matias-lee/AlzTrial/graph/badge.svg)](https://app.codecov.io/gh/matias-lee/AlzTrial)
 <!-- badges: end -->
 
 The AlzTrial package provides a straightforward tool to plan the sample size and budget for a two-endpoint clinical trial, modeled after a hypothetical Alzheimer's disease study. Given specific effect sizes, standard deviations, and costs, the plan_alz_trial() function calculates the required number of participants and the total estimated cost, adhering to pre-set statistical power and error rates.

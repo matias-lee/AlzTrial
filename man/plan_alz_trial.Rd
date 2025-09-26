@@ -45,6 +45,7 @@ A nested list containing three main elements:
   \item \strong{sample_size}: A list detailing the required N for each endpoint, the final total enrollment, and the MRI substudy size.
   \item \strong{cost_breakdown}: A list detailing the total clinical, MRI, and overall trial costs.
 }
+#' @importFrom stats qnorm
 }
 \description{
 Calculates required sample sizes and total cost for a two-endpoint
