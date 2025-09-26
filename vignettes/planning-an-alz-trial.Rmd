@@ -1,0 +1,54 @@
+---
+title: "Planning an Alzheimer's Trial with AlzTrial"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Planning an Alzheimer's Trial with AlzTrial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette explains how to use the `AlzTrial` package to calculate the necessary sample size and budget for a hypothetical Alzheimer's disease clinical trial.
+
+## Setup
+
+First, we load the package.
+
+```{r setup}
+library(AlzTrial)
+```
+
+## Example: Planning a Study
+
+We will use the `plan_alz_trial()` function to plan our study. This function requires inputs for the expected effect sizes, standard deviations, and costs for the trial's primary (CDR-SB) and secondary (hippocampal volume) endpoints.
+
+Let's plan a study based on the parameters from our Statistical Analysis Plan.
+
+```{r plan}
+my_plan <- plan_alz_trial(
+  delta_cdr = 0.75,
+  sd_cdr = 1.0,
+  delta_hv = 2.0,
+  sd_hv = 2.0,
+  cost_baseline = 3000,
+  cost_followup = 2000,
+  cost_mri_per_scan = 5000
+)
+
+# Print the results
+my_plan
+```
+
+## Understanding the Output
+
+The output shows that to achieve 90% power for both endpoints, we must enroll **`r my_plan$sample_size$final_enrollment_n`** participants in total. This is driven by the CDR-SB endpoint's requirement of **`r my_plan$sample_size$cdr_sb_required_n`** participants.
+
+The MRI substudy will require **`r my_plan$sample_size$mri_substudy_n`** participants.
+
+The total estimated cost for this trial design is **$`r format(my_plan$cost_breakdown$total_trial_cost, big.mark = ",")`**.
